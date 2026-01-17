@@ -8,10 +8,9 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo 'Hello build'
-                sleep(10)
-                echo 'Building the project...'
-                echo 'Build complete.'
+                echo'start build'
+                ps("./mvnw.cmd clean compile test-compile")
+                echo 'Build completed successfully.'
             }
         }
         stage('test') {
