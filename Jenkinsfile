@@ -6,6 +6,11 @@ pipeline {
       }
     stages {
         stage('prepare') {
+
+            environment {
+                APP = credentials('kahfi_rahasia')
+            }
+
             agent {
                 node {
                     label "docker"
@@ -16,6 +21,8 @@ pipeline {
                 echo "start job : ${env.JOB_NAME}"
                 echo "build number : ${env.BUILD_NUMBER}"
                 echo "build url : ${env.BUILD_URL}"
+                echo "app username : ${APP_USR}"
+                echo "app password : ${APP_PSW}"
             }
         }
         stage('build') {
