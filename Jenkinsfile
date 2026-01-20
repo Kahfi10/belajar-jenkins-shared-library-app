@@ -35,7 +35,6 @@ pipeline {
                         values '18.04', '20.04'
                     }
                 }
-            }
             stages {
                 stage('OS setup') {
                     agent {
@@ -48,6 +47,7 @@ pipeline {
                         sleep(5)
                     }
                 }
+            }
             }
         }
 
