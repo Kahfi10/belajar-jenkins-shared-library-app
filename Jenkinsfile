@@ -22,6 +22,35 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
     }
     stages {
+
+        stage('OS setup') {
+            matrix {
+                axes {
+                    axis {
+                        name 'OS'
+                        values 'ubuntu', 'centos', 'debian'
+                    }
+                    axis {
+                        name 'VERSION'
+                        values '18.04', '20.04'
+                    }
+                }
+            }
+            stages {
+                stage('OS setup') {
+                    agent {
+                        node {
+                            label "docker"
+                        }
+                    }
+                    steps {
+                        echo "Setting up on OS: ${OS} with version: ${VERSION}"
+                        sleep(5)
+                    }
+                }
+            }
+        }
+
         stage('preparation') {
             parallel {
                 stage('prepare java') {
