@@ -35,6 +35,18 @@ pipeline {
                         values '18.04', '20.04'
                     }
                 }
+                excludes {
+                    exclude {
+                        axis {
+                            name 'OS'
+                            value 'centos'
+                        }
+                        axis {
+                            name 'VERSION'
+                            value '18.04'
+                        }
+                    }
+                }
             stages {
                 stage('OS setup') {
                     agent {
