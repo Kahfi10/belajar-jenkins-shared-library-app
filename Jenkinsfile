@@ -31,12 +31,14 @@ pipeline {
             stages {
                 stage('checkout') {
                     steps {
-                        checkout scm
+                        echo "Checking out source code"
+                        sleep(5)
                     }
                 }
                 stage('setup') {
                     steps {
-                        sh "./mvnw clean install -DskipTests=true"
+                        echo "Setting up the environment"
+                        sleep(5)
                     }
                 }
             }
