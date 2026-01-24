@@ -1,14 +1,15 @@
 @Library('belajar-jenkins-shared-library@main') _
+
 pipeline {
     agent any
+    
     stages {
-        stage ('hello worldkahfi') {
+        stage('Hello World') {
             steps {
                 script {
                     hello.world()
                 }
             }
-
         }
     }
 }
