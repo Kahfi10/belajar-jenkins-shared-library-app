@@ -1,7 +1,5 @@
 @Library('belajar-jenkins-shared-library@main') _
 
-import kahfi.jenkins.Output;
-
 pipeline {
     agent any
     
@@ -28,13 +26,8 @@ pipeline {
             }
         }
 
-        stage('hello kahfi') {
-            steps {
-                script {
-                    Output.hello(this, 'Kahfi')
-                }
-            }
-        }
+        // Removed direct class call from shared library to avoid
+        // Jenkins Sandbox/CPS method approval issues.
         stage('Hello World') {
             steps {
                 script {
