@@ -6,6 +6,15 @@ pipeline {
     agent any
     
     stages {
+        stage('global variable') {
+            steps {
+                script {
+                    echo (author.name())
+                    echo (author.channel())
+                }
+            }
+        }
+
         stage('hello kahfi') {
             steps {
                 script {
