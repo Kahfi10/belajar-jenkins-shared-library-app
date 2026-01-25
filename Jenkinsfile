@@ -31,7 +31,8 @@ pipeline {
         stage('Hello World') {
             steps {
                 script {
-                    helloWorld()
+                    // Use shared library global step: vars/hello.groovy -> world()
+                    hello.world()
                 }
             }
         }
