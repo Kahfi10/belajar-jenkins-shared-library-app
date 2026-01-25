@@ -7,7 +7,8 @@ pipeline {
         stage('library resource') {
             steps {
                 script {
-                    def config = LibraryResource 'config/build.json'
+                    // Load file from shared library resources (vars/libraryResource)
+                    def config = libraryResource('config/build.json')
                     echo(config)
                 }
             }
