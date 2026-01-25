@@ -4,6 +4,16 @@ pipeline {
     agent any
     
     stages {
+        stage('library resource') {
+            steps {
+                script {
+                    def config = libraryResource 'config/build.json'
+                    echo(config)
+                }
+            }
+
+        }
+
         stage('hello person') {
             steps{
                 script{
