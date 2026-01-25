@@ -6,7 +6,7 @@ pipeline {
     agent any
     
     stages {
-        stage {
+        stage('Build Maven Project') {
             steps {
                 script {
                     maven('clean compile')
