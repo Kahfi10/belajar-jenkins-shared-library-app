@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'kahfi-agent'
+            label "linux && java11"
         }
     }
 
