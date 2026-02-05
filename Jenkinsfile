@@ -11,14 +11,17 @@ pipeline {
                 echo 'Hello build'
             }
         }
-            steps('test') {
+        stage('test') {
+            steps {
                 echo 'Hello test'
             }
         }
-            steps('deploy') {
+        stage('deploy') {
+            steps {
                 echo 'Hello deploy'
             }
-            }   
+        }
+    }
 
     post {
         always {
