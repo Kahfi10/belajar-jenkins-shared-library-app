@@ -9,16 +9,22 @@ pipeline {
         stage('build') {
             steps {
                 echo 'Hello build'
+                echo 'Building the project...'
+                echo 'Build complete.'
             }
         }
         stage('test') {
             steps {
                 echo 'Hello test'
+                echo 'Running tests...'
+                echo 'All tests passed.'
             }
         }
         stage('deploy') {
             steps {
                 echo 'Hello deploy'
+                echo 'Deploying the application...'
+                echo 'Deployment successful.'
             }
         }
     }
