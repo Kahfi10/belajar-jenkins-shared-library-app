@@ -9,6 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'Hello build'
+                sleep(10)
                 echo 'Building the project...'
                 echo 'Build complete.'
             }
@@ -16,6 +17,7 @@ pipeline {
         stage('test') {
             steps {
                 echo 'Hello test'
+                sleep(10)
                 echo 'Running tests...'
                 echo 'All tests passed.'
             }
@@ -23,6 +25,7 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'Hello deploy'
+                sleep(10)
                 echo 'Deploying the application...'
                 echo 'Deployment successful.'
             }
