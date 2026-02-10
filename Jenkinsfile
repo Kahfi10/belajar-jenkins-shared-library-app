@@ -8,15 +8,16 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo'start build'
-                sh("./mvnw clean compile test-compile")
-                echo 'Build completed successfully.'
+                script {
+                    for (int i = 0; i < 1; i++) {
+                        echo "Hello build iteration ${i}"
+                    }
+                }
             }
         }
         stage('test') {
             steps {
                 echo 'Hello test'
-                sleep(10)
                 echo 'Running tests...'
                 echo 'All tests passed.'
             }
@@ -24,7 +25,6 @@ pipeline {
         stage('deploy') {
             steps {
                 echo 'Hello deploy'
-                sleep(10)
                 echo 'Deploying the application...'
                 echo 'Deployment successful.'
             }
