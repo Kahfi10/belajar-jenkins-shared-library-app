@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 echo'start build'
-                sh("./mvnw.cmd clean compile test-compile")
+                sh("./mvnw clean compile test-compile")
                 echo 'Build completed successfully.'
             }
         }
