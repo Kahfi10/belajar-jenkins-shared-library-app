@@ -22,7 +22,7 @@ pipeline {
                         "firstName": "John",
                         "lastName": "Doe",
                     }
-                    writeJSON file: 'data.json', json: data
+                    writeJSON(file: 'data.json', json: data)
                 }
                 echo 'Hello test'
                 sh("./mvnw test")
