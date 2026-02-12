@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-        node {
-            label "docker"
-        }
-    }
+    agent none
 
     stages {
         stage('build') {
+            agent {
+            node {
+                label "docker"
+            }
+        }
             steps {
                 script {
                     for (int i = 0; i < 1; i++) {
@@ -16,6 +17,11 @@ pipeline {
             }
         }
         stage('test') {
+                agent {
+                node {
+                    label "docker"
+                }
+            }
             steps {
                 script{
                     def data = [
