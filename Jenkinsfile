@@ -1,6 +1,5 @@
 pipeline {
     agent none
-        stages {
         stage('prepare') {
             agent {
             node {
@@ -71,4 +70,3 @@ pipeline {
             echo 'This will run at the end, regardless of the pipeline result.'
         }
     }
-}
