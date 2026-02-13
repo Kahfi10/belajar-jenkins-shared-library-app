@@ -1,6 +1,19 @@
 pipeline {
     agent none
-
+        stages {
+        stage('prepare') {
+            agent {
+            node {
+                label "docker"
+            }
+        }
+            steps {
+                echo "start job : ${env.JOB_NAME}"
+                echo "build number : ${env.BUILD_NUMBER}"
+                echo "build url : ${env.BUILD_URL}"
+            }
+        }
+    }
     stages {
         stage('build') {
             agent {
