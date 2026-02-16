@@ -13,9 +13,47 @@ pipeline {
                 echo "build url : ${env.BUILD_URL}"
             }
         }
+        stage('build') {
+            agent {
+                node {
+                    label "docker"
+                }
+            }
+            steps {
+                script {
+                    for (int i = 0; i < 1; i++) {
+                        echo "Hello build iteration ${i}"
+                    }
+                }
+            }
+        }
+        stage('test') {
+            agent {
+                node {
+                    label "docker"
+                }
+            }
+            steps {
+                script {
+                    def data = [
+                        "firstName": "John",
+                        "lastName": "Doe",
+                    ]
+                    writeJSON(file: 'data.json', json: data)
+                }
+                echo 'Hello test'
+                sh("./mvnw test")
+                echo 'Tests completed.'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'Hello deploy'
+                echo 'Deploying the application...'
+                echo 'Deployment successful.'
+            }
+        }
     }
-}
-    stages {
         stage('build') {
             agent {
             node {
