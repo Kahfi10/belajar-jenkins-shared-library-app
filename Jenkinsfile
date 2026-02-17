@@ -54,7 +54,6 @@ pipeline {
             }
         }
     }
-}
 
     post {
         always {
@@ -70,3 +69,4 @@ pipeline {
             echo 'This will run at the end, regardless of the pipeline result.'
         }
     }
+}
