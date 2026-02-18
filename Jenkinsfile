@@ -1,5 +1,9 @@
 pipeline {
     agent none
+
+    environment {
+       AUTHOR = "KAHFI"
+      }
     stages {
         stage('prepare') {
             agent {
@@ -8,6 +12,7 @@ pipeline {
                 }
             }
             steps {
+                echo "author: ${env.AUTHOR}"
                 echo "start job : ${env.JOB_NAME}"
                 echo "build number : ${env.BUILD_NUMBER}"
                 echo "build url : ${env.BUILD_URL}"
