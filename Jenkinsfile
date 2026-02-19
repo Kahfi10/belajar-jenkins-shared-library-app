@@ -22,7 +22,7 @@ pipeline {
                 echo "build number : ${env.BUILD_NUMBER}"
                 echo "build url : ${env.BUILD_URL}"
                 echo "app username : ${APP_USR}"
-                echo "app password : ${APP_PSW}"
+                sh"echo 'App password : ${APP_PSW}' => secret.txt"
             }
         }
         stage('build') {
