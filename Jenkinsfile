@@ -4,6 +4,11 @@ pipeline {
     environment {
        AUTHOR = "KAHFI"
       }
+    
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 10, unit: 'MINUTES')
+    }
     stages {
         stage('prepare') {
 
@@ -22,7 +27,7 @@ pipeline {
                 echo "build number : ${env.BUILD_NUMBER}"
                 echo "build url : ${env.BUILD_URL}"
                 echo "app username : ${APP_USR}"
-                sh"echo 'App password : ${APP_PSW}' => secret.txt"
+                sh "echo 'App password : ${APP_PSW}' > secret.txt"
             }
         }
         stage('build') {
