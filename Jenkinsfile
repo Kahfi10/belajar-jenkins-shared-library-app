@@ -5,11 +5,33 @@ pipeline {
        AUTHOR = "KAHFI"
       }
     
+    parameters {
+        string(name: 'name', defaultValue: 'main', description: 'Branch to build')
+        text(name: 'description', defaultValue: 'This is a sample Jenkins pipeline', description: 'Description of the build')
+        booleanParam(name: 'runTests', defaultValue: true, description: 'Whether to run tests or not')
+        choice(name: 'environment', choices: ['development', 'staging', 'production'], description: 'Select the deployment environment')
+        password(name: 'APP_PSW', defaultValue: 'defaultPassword', description: 'Password for the application')
+    }
+    
     options {
         disableConcurrentBuilds()
         timeout(time: 10, unit: 'MINUTES')
     }
     stages {
+        stage('parameter') {
+            agent {
+                node {
+                    label "docker"
+                }
+            }
+            steps {
+                echo "Branch to build: ${params.name}"
+                echo "Build description: ${params.description}"
+                echo "Run tests: ${params.runTests}"
+                echo "Deployment environment: ${params.environment}"
+            }
+        }
+
         stage('prepare') {
 
             environment {
