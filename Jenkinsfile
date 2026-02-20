@@ -5,6 +5,10 @@ pipeline {
        AUTHOR = "KAHFI"
       }
     
+    triggers {
+        cron('H/5 * * * *')
+    }
+    
     parameters {
         string(name: 'name', defaultValue: 'main', description: 'Branch to build')
         text(name: 'description', defaultValue: 'This is a sample Jenkins pipeline', description: 'Description of the build')
