@@ -5,9 +5,9 @@ pipeline {
        AUTHOR = "KAHFI"
       }
     
-    triggers {
-        cron('H/5 * * * *')
-    }
+    // triggers {
+    //     cron('H/5  k* * * *')
+    // }
     
     parameters {
         string(name: 'name', defaultValue: 'main', description: 'Branch to build')
@@ -90,6 +90,16 @@ pipeline {
             }
         }
         stage('deploy') {
+            input {
+                message "can we deploy"
+                ok "Yes, let's deploy!"
+                submitter "admin"
+            }
+            agent {
+                node {
+                    label "docker"
+                }
+            }
             steps {
                 echo 'Hello deploy'
                 echo 'Deploying the application...'
