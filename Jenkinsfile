@@ -94,6 +94,9 @@ pipeline {
                 message "can we deploy"
                 ok "Yes, let's deploy!"
                 submitter "admin"
+                parameters {
+                    choice(name: 'DEPLOY_ENV', choices: ['development', 'staging', 'production'], description: 'Select the deployment environment')
+                }
             }
             agent {
                 node {
