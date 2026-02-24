@@ -110,6 +110,22 @@ pipeline {
         }
     }
 
+    stage('release') {
+        when {
+            expression {
+                return params.runTests
+            }
+        }
+        agent {
+            node {
+                label "docker"
+            }
+        }
+        steps {
+            echo 'Hello release'
+        }
+    }
+
     post {
         always {
             echo 'This will always run after the stages.'
