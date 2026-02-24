@@ -104,9 +104,8 @@ pipeline {
                 }
             }
             steps {
+                echo "Deploying to environment: ${params.DEPLOY_ENV}"
                 echo 'Hello deploy'
-                echo 'Deploying the application...'
-                echo 'Deployment successful.'
             }
         }
     }
