@@ -108,9 +108,7 @@ pipeline {
                 echo 'Hello deploy'
             }
         }
-    }
-
-    stage('release') {
+            stage('release') {
         when {
             expression {
                 return params.runTests
@@ -125,6 +123,9 @@ pipeline {
             echo 'Hello release'
         }
     }
+    }
+
+
 
     post {
         always {
