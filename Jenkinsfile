@@ -22,6 +22,25 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
     }
     stages {
+        stage('preparation'){
+            agent {
+                node {
+                    label "docker"
+                }
+            }
+            stages {
+                stage('checkout') {
+                    steps {
+                        checkout scm
+                    }
+                }
+                stage('setup') {
+                    steps {
+                        sh "./mvnw clean install -DskipTests=true"
+                    }
+                }
+            }
+        }
         stage('parameter') {
             agent {
                 node {
