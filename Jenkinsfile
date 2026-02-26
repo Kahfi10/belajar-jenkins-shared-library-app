@@ -23,11 +23,17 @@ pipeline {
     }
     stages {
         stage('preparation'){
-            agent {
-                node {
-                    label "docker"
+            parallel {
+            stage('prepare java') {
+                agent {
+                    node {
+                        label "docker"
+                    }
                 }
-            }
+                steps {
+                    echo "Preparing Java environment"
+                    sleep(5)
+                }
             stages {
                 stage('checkout') {
                     steps {
@@ -36,11 +42,18 @@ pipeline {
                     }
                 }
                 stage('setup') {
+                agent {
+                    node {
+                    label "docker"
+                }
+            }
                     steps {
                         echo "Setting up the environment"
                         sleep(5)
                     }
                 }
+            }
+
             }
         }
         stage('parameter') {
