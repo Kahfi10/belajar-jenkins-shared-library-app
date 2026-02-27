@@ -22,7 +22,7 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
     }
     stages {
-        stages('preparation') {
+        stage('preparation') {
             parallel {
                 stage('prepare java') {
                     agent {
