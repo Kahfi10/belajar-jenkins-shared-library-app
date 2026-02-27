@@ -22,38 +22,30 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES')
     }
     stages {
-        stage('preparation'){
+        stages('preparation') {
             parallel {
-            stage('prepare java') {
-                agent {
-                    node {
-                        label "docker"
+                stage('prepare java') {
+                    agent {
+                        node {
+                            label "docker"
+                        }                    
                     }
-                }
-                steps {
-                    echo "Preparing Java environment"
-                    sleep(5)
-                }
-            stages {
-                stage('checkout') {
                     steps {
-                        echo "Checking out source code"
+                        echo 'prepare java'
                         sleep(5)
                     }
                 }
-                stage('setup') {
-                agent {
-                    node {
-                    label "docker"
-                }
-            }
+                stage('prepare maven') {
+                    agent {
+                        node {
+                            label "docker"
+                        }                    
+                    }
                     steps {
-                        echo "Setting up the environment"
+                        echo 'prepare maven'
                         sleep(5)
                     }
                 }
-            }
-
             }
         }
         stage('parameter') {
