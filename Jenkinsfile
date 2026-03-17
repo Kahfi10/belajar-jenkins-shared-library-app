@@ -39,11 +39,11 @@ pipeline {
                     exclude {
                         axis {
                             name 'OS'
-                            value 'centos'
+                            values 'centos'
                         }
                         axis {
                             name 'VERSION'
-                            value '18.04'
+                            values '18.04'
                         }
                     }
                 }
