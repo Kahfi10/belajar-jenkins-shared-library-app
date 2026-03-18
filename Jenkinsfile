@@ -3,6 +3,7 @@ pipeline {
 
     environment {
        AUTHOR = "KAHFI"
+       APP = credentials('kahfi_rahasia')
       }
     
     // triggers {
@@ -187,7 +188,10 @@ pipeline {
             }
         }
         steps {
-            echo 'Hello release'
+           withCredentials([usernamePassword(credentialsId: 'kahfi_rahasia', passwordVariable: 'APP_PSW', usernameVariable: 'APP_USR')]) {
+                echo "Releasing application with username: ${APP_USR}"
+                sh "echo 'release it with -u ${APP_USR} -p ${APP_PSW}'  > release.txt" 
+            }
         }
     }
     }
