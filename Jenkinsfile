@@ -2,7 +2,7 @@
 pipeline {
     agent any
     stages {
-        stage ('hello world') {
+        stage ('hello worldkahfi') {
             steps {
                 script {
                     hello.world()
