@@ -9,11 +9,7 @@ pipeline {
         stage('Build Maven Project') {
             steps {
                 script {
-                    if (isUnix()) {
-                        sh './mvnw clean compile test'
-                    } else {
-                        bat 'mvnw.cmd clean compile test'
-                    }
+                   maven(['clean', 'install'] )
                 }
             }
         }
@@ -21,7 +17,6 @@ pipeline {
         stage('global variable') {
             steps {
                 script {
-                    echo author()
                     echo author.name()
                     echo author.channel()
                 }
