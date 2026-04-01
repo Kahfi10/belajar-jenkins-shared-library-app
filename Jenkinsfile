@@ -9,7 +9,11 @@ pipeline {
         stage('Build Maven Project') {
             steps {
                 script {
-                   maven(['clean', 'install'] )
+                    if (isUnix()) {
+                        sh './mvnw clean install'
+                    } else {
+                        bat 'mvnw.cmd clean install'
+                    }
                 }
             }
         }
