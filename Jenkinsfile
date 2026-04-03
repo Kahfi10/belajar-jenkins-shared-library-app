@@ -10,9 +10,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh './mvnw clean install'
+                        sh './mvnw clean compile test'
                     } else {
-                        bat 'mvnw.cmd clean install'
+                        bat 'mvnw.cmd clean compile test'
                     }
                 }
             }
@@ -21,9 +21,9 @@ pipeline {
         stage('global variable') {
             steps {
                 script {
-                    echo author()
-                    echo author.name()
-                    echo author.channel()
+                    echo(author())
+                    echo(author.name())
+                    echo(author.channel())
                 }
             }
         }
