@@ -4,6 +4,16 @@ pipeline {
     agent any
     
     stages {
+        stage('hello person') {
+            steps{
+                script{
+                    hello.person([
+                        firstName: 'ashabul',
+                        lastName: 'kahfi'
+                    ])
+                }
+            }
+        }
         stage('Build Maven Project') {
             steps {
                 script {
