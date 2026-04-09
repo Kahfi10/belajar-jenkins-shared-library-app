@@ -7,7 +7,8 @@ pipeline {
         stage('hello person') {
             steps{
                 script{
-                    hello.person([
+                    // Shared library vars/person.groovy defines method person(Map)
+                    person.person([
                         firstName: 'ashabul',
                         lastName: 'kahfi'
                     ])
